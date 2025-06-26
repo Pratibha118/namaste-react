@@ -1,3 +1,58 @@
-#heading{
-    color:red;
+#heading {
+  color: red;
+}
+.header-container {
+  background-color: rgb(174, 216, 215);
+  display: flex;
+  justify-content: space-between;
+}
+.logo-container {
+  margin: 20px;
+}
+.logo {
+  width: 50px;
+}
+.menu-container > ul {
+  display: flex;
+  padding: 0px 20px;
+}
+
+.menu-container > ul > li {
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* .body{
+  margin: 5px;
+} */
+
+.res-card {
+  background-color: #f0f0f0;
+  padding: 5px;
+  width: 200px;
+  margin: 8px;
+}
+
+.res-card:hover {
+
+  border: 1px solid black;
+  box-shadow: #f0f0f0;
+  cursor: pointer ;
+} 
+
+.res-container{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+} 
+
+.cart-img {
+  width: 190px;
+}
+
+.filter-btn{
+  margin: 5px;
+  cursor: pointer;
+  border: 1px solid black;;
 }
