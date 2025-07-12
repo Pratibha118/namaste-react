@@ -52,7 +52,51 @@
 }
 
 .filter-btn{
-  margin: 5px;
+  margin: 10px;
   cursor: pointer;
   border: 1px solid black;;
+}
+
+.shimmer-container{
+  display: flex;
+  justify-content: space-evenly ;
+  flex-wrap: wrap;
+}
+
+.shimmer-card{
+  background-color: #f0f0f0;
+  width: 200px;
+  height: 350px;
+  margin: 10px;
+}
+
+.filter{
+  display: flex;
+}
+
+.search-box{
+  margin: 10px;
+}
+
+.menu-items{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  width: max-content;
+    margin: 0px auto;
+}
+
+.menu-images{
+  width: 150px;
+  height: 150px;;
+}
+
+.veg-img{
+  width: 20px;
+  height: 20px;
+}
+
+.non-veg-img{
+  width: 35px;
+  height: 35px;
 }
