@@ -1,18 +1,21 @@
 import RestaurantCart, { withPromotedLabel } from "./RestaurantCart";
 import mockData from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Search from "./Search";
 import axios from "axios";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { RES_LIST } from "../utils/constants";
+import UserContext from "../utils/userContext/UserContext";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const networkStatus = useOnlineStatus();
+
+  const {loggedInUser, setUserName} = useContext(UserContext)
 
   useEffect(() => {
     getResCarts();
@@ -80,6 +83,7 @@ const Body = () => {
               Top Rated Restaurants
             </button>
           </div>
+          <input value={loggedInUser} onChange={(e)=>setUserName(e.target.value)} className="border border-black" />
         </div>
 
         <div className="flex flex-wrap justify-evenly">
