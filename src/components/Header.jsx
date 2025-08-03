@@ -2,10 +2,17 @@ import { Link } from "react-router";
 import { LOGO_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import mylogo from "url:../utils/images/Bhojanam_logo.png";
+import { useContext } from "react";
+import UserContext from "../utils/userContext/UserContext";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const onlineStatus = useOnlineStatus();
+  const contextData = useContext(UserContext);
+  const cartList = useSelector((state)=>state.cart.items)
+  console.log(cartList)
   return (
+    
     <>
       <div className="flex justify-between bg-pink-100 shadow-lg ">
         <div>
@@ -23,10 +30,13 @@ export const Header = () => {
             <li>
               <Link to="/contactus">ContactUs</Link>
             </li>
-            <li>Cart</li>
+            <li><Link to="/cart"> Cart : {cartList?.length} </Link></li>
+            <li>{contextData.loggedInUser}</li>
+
           </ul>
         </div>
       </div>
     </>
+  
   );
 };
