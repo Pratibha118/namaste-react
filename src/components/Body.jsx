@@ -1,18 +1,19 @@
 import RestaurantCart, { withPromotedLabel } from "./RestaurantCart";
-import mockData from "../utils/mockData";
-import { useEffect, useState } from "react";
-import Search from "./Search";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { RES_LIST } from "../utils/constants";
+import UserContext from "../utils/userContext/UserContext";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const networkStatus = useOnlineStatus();
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   useEffect(() => {
     getResCarts();
@@ -53,9 +54,9 @@ const Body = () => {
     );
   }
 
-  return resList.length === 0 ? (
-    <Shimmer />
-  ) : (
+  if (resList.length === 0) return <Shimmer />;
+
+  return (
     <>
       <div>
         <div className="flex gap-4">
@@ -64,6 +65,7 @@ const Body = () => {
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               className="border border-black"
+              data-testid='search-input'
             />
             <button
               onClick={handleSearchClick}
@@ -80,6 +82,11 @@ const Body = () => {
               Top Rated Restaurants
             </button>
           </div>
+          <input
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+            className="border border-black"
+          />
         </div>
 
         <div className="flex flex-wrap justify-evenly">
@@ -92,7 +99,7 @@ const Body = () => {
                 {
                   //if restaurant is promoted then show promoted label on it
                   restaurant?.info?.isOpen ? (
-                    <PromotedRestaurantCart resData={restaurant?.info}/>
+                    <PromotedRestaurantCart resData={restaurant?.info} />
                   ) : (
                     <RestaurantCart resData={restaurant?.info} />
                   )
