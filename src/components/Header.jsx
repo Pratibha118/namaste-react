@@ -10,7 +10,6 @@ export const Header = () => {
   const onlineStatus = useOnlineStatus();
   const contextData = useContext(UserContext);
   const cartList = useSelector((state)=>state.cart.items)
-  console.log(cartList)
   return (
     
     <>

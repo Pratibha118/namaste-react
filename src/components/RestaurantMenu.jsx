@@ -11,10 +11,13 @@ const RestaurantMenu = () => {
   const [showIndex, setShowIndex] = useState(null);
   
 
-  if (result === null) return <Shimmer />;
+  if (!result) return <Shimmer />;
 
+   console.log(result)
   const { name, avgRating, cuisines, sla, costForTwoMessage } =
     result?.data?.data?.cards[2]?.card?.card?.info;
+
+   
 
   const { itemCards } =
     result?.data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
@@ -26,8 +29,6 @@ const RestaurantMenu = () => {
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-
-  console.log(categories);
 
   return (
     <div>
